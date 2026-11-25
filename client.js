@@ -6,8 +6,40 @@
  * through the Conversation service — the same path the composer's own file picker
  * uses — so the image waits in the input box to be sent with the next message.
  */
+/**
+ * The module id has to equal the package name the Host put in its boot graph;
+ * registering under any other id leaves the factory unmatched, and the browser
+ * half silently never mounts (no camera button, no error anywhere).
+ *
+ * The graph row for this bundle carries both the id and the revisioned script
+ * URL, so resolve the id from the row whose URL is this very script — a rename
+ * or a vendored copy then cannot desynchronise the two halves. The constant is
+ * only a fallback for a combo script that serves several rows at one URL.
+ */
+const resolveModuleId = () => {
+  const FALLBACK = 'dsh-quick-shot'
+  try {
+    const boot = window.__DSH_BOOT__
+    const entries = Array.isArray(boot) ? boot : boot && Array.isArray(boot.entries) ? boot.entries : []
+    const self = typeof document === 'undefined' ? null : document.currentScript
+    if (typeof self?.src !== 'string' || !self.src) return FALLBACK
+    const absolute = (url) => {
+      try {
+        return new URL(url, document.baseURI).href
+      } catch {
+        return null
+      }
+    }
+    const own = absolute(self.src)
+    const row = entries.find((entry) => entry && typeof entry.url === 'string' && absolute(entry.url) === own)
+    return row && typeof row.id === 'string' && row.id ? row.id : FALLBACK
+  } catch {
+    return FALLBACK
+  }
+}
+
 window.__ModuleLoader__.load({
-  id: 'dsh-quick-shot',
+  id: resolveModuleId(),
   factory(require) {
     const React = require('react')
     const h = React.createElement
