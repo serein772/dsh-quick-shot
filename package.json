@@ -1,0 +1,56 @@
+{
+  "name": "dsh-quick-shot",
+  "version": "1.0.0",
+  "description": "Screenshot straight into the composer: hide the window, drag a region, and the PNG lands in the draft as an attachment.",
+  "type": "module",
+  "icon": "icon.svg",
+  "license": "MIT",
+  "author": "serein772",
+  "homepage": "https://github.com/serein772/dsh-quick-shot#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serein772/dsh-quick-shot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/serein772/dsh-quick-shot/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "screenshot",
+    "snip",
+    "attachment",
+    "windows"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "helper.cs",
+    "capture.ps1",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}
