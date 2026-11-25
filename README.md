@@ -1,5 +1,7 @@
 # Quick shot (`dsh-quick-shot`)
 
+English | [中文](README.zh.md)
+
 **Windows only.** The capture is a WinForms/C# helper the Host compiles on first
 use; there is no non-Windows path.
 
