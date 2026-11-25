@@ -7,7 +7,7 @@
  * uses — so the image waits in the input box to be sent with the next message.
  */
 window.__ModuleLoader__.load({
-  id: '@local/quick-shot',
+  id: 'dsh-quick-shot',
   factory(require) {
     const React = require('react')
     const h = React.createElement
