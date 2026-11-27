@@ -2,4 +2,4 @@
 # load ./client.js as the browser half, which draws the composer button.
 - insert:
     - id: quick-shot
-      name: 'dsh-quick-shot'
+      name: '@serein1178/dsh-quick-shot'

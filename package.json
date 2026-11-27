@@ -1,5 +1,5 @@
 {
-  "name": "dsh-quick-shot",
+  "name": "@serein1178/dsh-quick-shot",
   "version": "1.0.4",
   "description": "Screenshot straight into the composer: hide the window, drag a region, and the PNG lands in the draft as an attachment.",
   "type": "module",
