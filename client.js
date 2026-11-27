@@ -16,6 +16,7 @@
  * or a vendored copy then cannot desynchronise the two halves. The constant is
  * only a fallback for a combo script that serves several rows at one URL.
  */
+;(() => {
 const resolveModuleId = () => {
   const FALLBACK = 'dsh-quick-shot'
   try {
@@ -508,3 +509,4 @@ window.__ModuleLoader__.load({
     }
   },
 })
+})()
